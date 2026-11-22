@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | My website</title>
+    <style>
+      /* --- Global Base Styles --- */
+      body {
+        background-color: #0f172a;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #f8fafc;
+        margin: 0;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        box-sizing: border-box;
+        transition: background-color 0.3s ease;
+      }
+
+      /* --- CSS Grid Container --- */
+      .dashboard {
+        display: grid;
+        grid-template-columns: 320px 1fr; /* Profile on left, main content on right */
+        gap: 24px;
+        max-width: 900px;
+        width: 100%;
+      }
+
+      /* Base Panel Card Styling */
+      .panel {
+        background-color: #1e293b;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+        border: 1px solid #334155;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      /* Left Sidebar Profile */
+      .profile-panel {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .theme-btn {
+        background: none;
+        border: 1px solid #38bdf8;
+        color: #38bdf8;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
+
+      .avatar-circle {
+        width: 80px;
+        height: 80px;
+        background-color: #38bdf8;
+        color: #0f172a;
+        font-size: 36px;
+        font-weight: bold;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+      }
+
+      h1 { font-size: 22px; margin: 10px 0 5px 0; }
+      .subtitle { color: #38bdf8; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+      p { color: #94a3b8; font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
+
+      .btn {
+        width: 100%;
+        background-color: #38bdf8;
+        color: #0f172a;
+        text-decoration: none;
+        padding: 10px 0;
+        font-weight: bold;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        text-align: center;
+        transition: all 0.2s ease;
+        box-sizing: border-box;
+      }
+      .btn:hover { background-color: #0284c7; color: #ffffff; }
+
+      .btn-secondary {
+        width: 100%;
+        background-color: transparent;
+        color: #38bdf8;
+        text-decoration: none;
+        padding: 10px 0;
+        font-weight: bold;
+        border-radius: 8px;
+        border: 2px solid #38bdf8;
+        text-align: center;
+        transition: all 0.2s ease;
+        box-sizing: border-box;
+      }
+      .btn-secondary:hover { background-color: #38bdf8; color: #0f172a; }
+
+      /* Right Main Dashboard Area (Inner Grid) */
+      .main-panel {
+        display: grid;
+        grid-template-rows: auto auto;
+        gap: 20px;
+      }
+
+      .widget {
+        background-color: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 12px;
+        padding: 20px;
+      }
+
+      .widget h3 {
+        font-size: 16px;
+        color: #38bdf8;
+        margin: 0 0 15px 0;
+      }
+
+      /* Task Tracker Styling */
+      .input-group {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 15px;
+      }
+
+      input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #334155;
+        background-color: #1e293b;
+        color: #ffffff;
+        font-size: 14px;
+        outline: none;
+      }
+
+      .add-btn {
+        background-color: #38bdf8;
+        color: #0f172a;
+        border: none;
+        padding: 10px 14px;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      ul { list-style: none; padding: 0; margin: 0; }
+      li {
+        background-color: #1e293b;
+        padding: 10px 12px;
+        border-radius: 6px;
+        margin-bottom: 8px;
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .delete-btn { color: #ef4444; cursor: pointer; font-weight: bold; padding-left: 10px; }
+
+      /* Quote Box Styling */
+      .quote-box {
+        font-style: italic;
+        color: #cbd5e1;
+        font-size: 14px;
+        margin-bottom: 15px;
+        min-height: 40px;
+      }
+
+      .quote-btn {
+        background-color: transparent;
+        border: 1px solid #38bdf8;
+        color: #38bdf8;
+        padding: 8px 14px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .quote-btn:hover { background-color: #38bdf8; color: #0f172a; }
+
+       /* Skills badges container */
+       .skills-container {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 8px;
+         justify-content:center;
+         margin-bottom: 20px;
+        }
+
+        .skill-badge {
+          background-color: #0f172a;
+          border: 1px solid #38bdf8;
+          color: #38bdf8;
+          font-size: 11px;
+          font-weight: 600;
+          padding: 4px 10px;
+          text-transform: uppercase;
+         }
+
+       /* light mode support for badges */
+       .light-mode .skill-badge {
+         background-color: #e2e8f0;
+         color: #0284c7
+         border-color: #0284c7;
+        }
+
+      /* --- MEDIA QUERY: Mobile Responsiveness --- */
+      @media (max-width: 768px) {
+        .dashboard {
+          grid-template-columns: 1fr; /* Switch to 1 column on smaller screens */
+        }
+      }
+
+      /* --- Light Mode Styles --- */
+      body.light-mode { background-color: #f1f5f9; }
+      .light-mode .panel { background-color: #ffffff; color: #0f172a; border-color: #e2e8f0; }
+      .light-mode p { color: #64748b; }
+      .light-mode .widget { background-color: #f8fafc; border-color: #cbd5e1; }
+      .light-mode input[type="text"], .light-mode li { background-color: #ffffff; color: #0f172a; border: 1px solid #cbd5e1; }
+      .light-mode .quote-box { color: #475569; }
+
+      /* ...rest of your CSS styles ...*/
+  
+     /* completed task line-through style*/
+     .completed {
+       text-decoration: line-through;
+       opacity: 0.6;
+     }
+    </style>
+  </head>
+  <body>
+
+    <div class="dashboard">
+      
+      <!-- Left Panel: Profile Card -->
+      <div class="panel profile-panel" id="profilePanel">
+        <button class="theme-btn" onclick="toggleTheme()">☀️ / 🌙 Toggle Theme</button>
+        <div class="avatar-circle">M</div>
+        <h1>maggy mumbua| Frontend Developer</h1>
+        <div class="subtitle">Web Developer in Training</div>
+        <p>Building clean, interactive web applications from scratch using HTML, CSS, and JavaScript.</p
+  
+        <!-- Add this new block right here! -->
+        <div class="skills-container">
+        <span class="skill-badge">HTML5</span>
+        <span class="skill-badge">CSS3</span>
+        <span class="skill-badge">JavaScript</span>
+        <span class="skill-badge">Git & GitHub</span>
+        </div>
+        
+        <a href="#" class="btn" onclick="alert('Sending a message...')">Contact Me!</a>
+        <a href="projects.html">View My Projects ➔</a>
+      </div>
+
+      <!-- Right Panel: Interactive Dashboard -->
+      <div class="main-panel">
+        
+        <!-- Widget 1: Goal Tracker -->
+        <div class="panel widget">
+          <h3>🎯 Learning Goals Tracker</h3>
+          <div class="input-group">
+            <input type="text" id="taskInput" placeholder="Add a new goal...">
+            <button class="add-btn" onclick="addTask()">Add</button>
+          </div>
+          <ul id="taskList"></ul>
+        </div>
+
+        <!-- Widget 2: Quote Generator -->
+        <div class="panel widget">
+          <h3>💡 Daily Developer Wisdom</h3>
+          <div class="quote-box" id="quoteDisplay">Click the button below for inspiration!</div>
+          <button class="quote-btn" onclick="generateQuote()">New Quote</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script>
+      /* --- Load Saved Goals When Page Opens --- */
+      window.onload = function() {
+        //Load saved tasks
+        let savedTasks = localStorage.getItem("myGoals");
+        if (savedTasks) {
+          document.getElementById("taskList").innerHTML = savedTasks;
+        }
+
+        // Load saved theme preference
+        let saved theme = localStorage.getItem("myTheme");
+        if (savedTheme === "light") {
+          document.body.classList.add("light-mode");
+         }
+      };
+
+      /* --- Theme Toggle Function with storage --- */
+      function toggleTheme() {
+        document.body.classList.toggle("light-mode");
+
+        // Save the current theme choice to localstorage
+        if (document.body.classList.contains("light-mode")){
+          localStorage.setItem("myTheme", "light");
+        } else {
+          localStorage.setItem("myTheme", "dark");
+      }
+
+      /* --- Add Task Function --- */
+        function addTask() {
+        let input = document.getElementById("taskInput");
+        let taskText = input.value.trim();
+
+       if (taskText === "") {
+       alert("Please type a goal first!");
+       return;
+    }
+
+       let ul = document.getElementById("taskList");
+       let li = document.createElement("li");
+
+    /* Clicking text toggles completed line-through */
+       li.innerHTML = `<span onclick="toggleTask(this)" style="cursor:pointer;">${taskText}</span> <span class="delete-btn" onclick="removeTask(this)">✕</span>`;
+  
+        ul.appendChild(li);
+        input.value = ""; 
+        saveTasksToBrowser();
+      }
+
+      /* --- Toggle Completed Task --- */
+        function toggleTask(element) {
+        element.classList.toggle("completed");
+        saveTasksToBrowser();
+      }
+
+       /* --- Remove Task Function --- */
+        function removeTask(element) {
+        element.parentElement.remove();
+        saveTasksToBrowser();
+      }
+
+      /* --- Save Everything to LocalStorage --- */
+      function saveTasksToBrowser() {
+        let ul = document.getElementById("taskList");
+        localStorage.setItem("myGoals", ul.innerHTML);
+      }
+
+      /* --- Random Quote Generator Function --- */
+      const quotes = [
+        "“Talk is cheap. Show me the code.” – Linus Torvalds",
+        "“Programs must be written for people to read, and only incidentally for machines to execute.” – Harold Abelson",
+        "“Simplicity is prerequisite for reliability.” – Edsger W. Dijkstra",
+        "“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.” – Martin Fowler",
+        "“Code is like humor. When you have to explain it, it’s bad.” – Cory House",
+        "“Fix the cause, not the symptom.” – Steve Maguire"
+      ];
+
+      function generateQuote() {
+        let randomIndex = Math.floor(Math.random() * quotes.length);
+        document.getElementById("quoteDisplay").innerText = quotes[randomIndex];
+      }
+    </script>
+
+  </body>
+</html>
