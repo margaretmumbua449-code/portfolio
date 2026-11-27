@@ -286,6 +286,40 @@
       </div>
 
     </div>
+    <!-- Featured Live Projects Section -->
+<section style="max-width: 750px; margin: 40px auto; padding: 0 20px;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+    <h2 style="color: #38bdf8; margin: 0; font-size: 22px;">Featured Live Projects</h2>
+    <a href="projects.html" style="color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: bold;">View All Projects →</a>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px;">
+    <!-- Featured 1 -->
+    <div style="background-color: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 18px;">
+      <span style="font-size: 11px; color: #38bdf8; text-transform: uppercase; font-weight: bold;">CSS Grid & JS</span>
+      <h3 style="margin: 8px 0; font-size: 17px; color: #f8fafc;">Interactive Calculator</h3>
+      <p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin-bottom: 14px;">Responsive arithmetic calculator with backspace and clear controls.</p>
+      <a href="https://margaretmumbua449-code.github.io/calculator/" target="_blank" style="color: #38bdf8; text-decoration: none; font-size: 13px; font-weight: bold;">Launch App →</a>
+    </div>
+
+    <!-- Featured 2 -->
+    <div style="background-color: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 18px;">
+      <span style="font-size: 11px; color: #38bdf8; text-transform: uppercase; font-weight: bold;">Timers & DOM</span>
+      <h3 style="margin: 8px 0; font-size: 17px; color: #f8fafc;">Typing Speed Test</h3>
+      <p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin-bottom: 14px;">60-second WPM and accuracy test with live character feedback.</p>
+      <a href="https://margaretmumbua449-code.github.io/typing-test/" target="_blank" style="color: #38bdf8; text-decoration: none; font-size: 13px; font-weight: bold;">Launch App →</a>
+    </div>
+
+    <!-- Featured 3 -->
+    <div style="background-color: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 18px;">
+      <span style="font-size: 11px; color: #38bdf8; text-transform: uppercase; font-weight: bold;">LocalStorage App</span>
+      <h3 style="margin: 8px 0; font-size: 17px; color: #f8fafc;">Task Manager</h3>
+      <p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin-bottom: 14px;">Filterable to-do manager with persistent browser storage.</p>
+      <a href="https://margaretmumbua449-code.github.io/todo-app/" target="_blank" style="color: #38bdf8; text-decoration: none; font-size: 13px; font-weight: bold;">Launch App →</a>
+    </div>
+  </div>
+</section>
+
 
     <script>
       /* --- Load Saved Goals When Page Opens --- */
@@ -297,7 +331,7 @@
         }
 
         // Load saved theme preference
-        let saved theme = localStorage.getItem("myTheme");
+        let savedtheme = localStorage.getItem("myTheme");
         if (savedTheme === "light") {
           document.body.classList.add("light-mode");
          }
